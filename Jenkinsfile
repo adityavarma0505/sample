@@ -1,38 +1,34 @@
 pipeline {
-    agent any
-
-    environment {
-        JAVA_HOME = '/usr/lib/jvm/java-11-openjdk-amd64'  // Path to Java on Ubuntu
-        PATH = "${JAVA_HOME}/bin:${env.PATH}"
+  agent any
+  stages {
+    stage('clone') {
+      steps {
+        git 'https://github.com/22P61A0518/week2.git'
+      }
     }
-
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from your Git repository
-                git branch: 'main', url: 'https://github.com/adityavarma0505/sample.git'  // Replace with your Git repo URL
-            }
-        }
-
-        stage('Build') {
-            steps {
-                // Compile the Java code using javac
-                sh 'javac HelloWorld.java'
-            }
-        }
-
-        stage('Run') {
-            steps {
-                // Run the Java program using java
-                sh 'java HelloWorld'
-            }
-        }
+    stage('Build') {
+      steps {
+        echo 'Building the project...'
+        sh 'javac HelloWorld.java'
+      }
     }
-
-    post {
-        always {
-            // Clean up or run any post-build actions
-            echo 'Pipeline finished.'
-        }
+    stage('Test') {
+      steps {
+        echo 'Running tests...'
+        sh 'java HelloWorld'
+      }
+    }
+    stage('Deploy') {
+      steps {
+        echo 'Deploying the project...'
+      }
     }
 }
+  post {
+    success {
+      echo 'Pipeline completed successfully!'
+    }
+    failure {
+      echo 'Pipeline failed'
+    }
+  }
