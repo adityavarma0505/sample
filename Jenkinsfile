@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('clone') {
       steps {
-        git 'https://github.com/22P61A0518/week2.git'
+        git 'https://github.com/adityavarma0505/sample.git'
       }
     }
     stage('Build') {
@@ -23,7 +23,7 @@ pipeline {
         echo 'Deploying the project...'
       }
     }
-}
+  }
   post {
     success {
       echo 'Pipeline completed successfully!'
@@ -32,3 +32,4 @@ pipeline {
       echo 'Pipeline failed'
     }
   }
+}
