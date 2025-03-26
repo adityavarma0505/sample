@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Aditya</title>
+        <style>
+            body {
+                background-color: white;
+            }
+        </style>
+        <script>
+            function validateform() {
+                const username = document.forms["myform"]["name"].value;
+                if (username==" ") 
+                {
+                    alert("enter username");
+                }
+                const password = document.forms["myform"]["ps"].value;
+                if (password=" ")
+                 {
+                    alert("enter username");
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form name="myform" onsubmit="return validateform()"></form>
+            <center>
+                <h1>REGISTRATION FORM</h1>
+                NAME: <input type="text" name="fname" required><br><br>
+                USERNAME: <input type="text" name="name" required><br><br>
+                PASSWORD: <input type="password" name="ps" required><br><br>
+                GENDER: <br>
+                Male <input type="radio" name="gender" value="male">
+                Female <input type="radio" name="gender" value="female"><br><br>
+                <input type="submit" value="Register">
+            </center>
+        </form>
+    </body>
+</html>
